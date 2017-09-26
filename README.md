@@ -14,8 +14,12 @@ $ python duplicates.py c:\adb
 
 ```bash
 $ python duplicates.py c:\adb
-Duplicate: c:\adb\test\adb.exe file size: 0
-Duplicate: c:\adb\test2\adb.exe file size: 0
+Original file: c:\adb\adb.exe
+	Duplicate: c:\adb\test\adb.exe file size: 0
+Original file: c:\adb\adb.exe
+	Duplicate: c:\adb\test2\adb.exe file size: 0
+Original file: c:\adb\test3\adb.exe
+	Duplicate: c:\adb\test4\adb.exe file size: 2
 ```
 
 # Project Goals
