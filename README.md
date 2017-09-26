@@ -2,7 +2,7 @@
 
 Find duplicate of files on directory tree (by name and file size)
 
-#Quickstart
+# Quickstart
 
 Example of script launch on Linux, Python 3.5:
 
@@ -10,7 +10,7 @@ Example of script launch on Linux, Python 3.5:
 $ python duplicates.py c:\adb
 ```
 
-##Output example:
+## Output example:
 
 ```bash
 $ python duplicates.py c:\adb
