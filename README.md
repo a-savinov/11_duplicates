@@ -2,7 +2,7 @@
 
 Find duplicate of files on directory tree (by name and file size)
 
-Quickstart
+#Quickstart
 
 Example of script launch on Linux, Python 3.5:
 
