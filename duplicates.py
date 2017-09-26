@@ -9,7 +9,7 @@ def find_file_duplicates(path_to_dir):
         for file in filenames:
             file_size = os.stat(os.path.join(dirpath, file)).st_size
             file_path = os.path.join(dirpath, file)
-            if dict_of_orig_files.get((file, file_size,)) == None:
+            if dict_of_orig_files.get((file, file_size,)) is None:
                 dict_of_orig_files.update({(file, file_size,): file_path})
             else:
                 list_of_duplicates.append((file, file_size, file_path))
