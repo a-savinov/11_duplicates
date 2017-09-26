@@ -18,8 +18,9 @@ def find_file_duplicates(path_to_dir):
 
 def print_file_duplicates(files_list):
     for file in files_list:
-        print('Original file: ' + dict_of_orig_files.get((file[0], file[1],)))
-        print('\tDuplicate: ' + file[2] + ' file size: ' + str(file[1]))
+        print('Duplicate: ' + file[2] +
+              ' file size: ' + str(file[1]) +
+              ' - Original file: ' + dict_of_orig_files.get((file[0], file[1],)))
 
 
 if __name__ == '__main__':
