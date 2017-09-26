@@ -24,7 +24,7 @@ def print_file_duplicates(files_dict):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
+    if len(sys.argv) == 1:
         path_to_dir = sys.argv[1]
         files_dict = find_file_duplicates(path_to_dir)
         print_file_duplicates(files_dict)
