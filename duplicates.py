@@ -18,13 +18,12 @@ def find_file_duplicates(path_to_dir):
 
 def print_file_duplicates(files_list):
     for file in files_list:
-        print('Duplicate: ' + file[2] +
-              ' file size: ' + str(file[1]) +
+        print('Duplicate: ' + file[2] + ' file size: ' + str(file[1]) +
               ' - Original file: ' + dict_of_orig_files.get((file[0], file[1],)))
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 2 and os.path.exists(sys.argv[1]):
         path_to_dir = sys.argv[1]
         dict_of_orig_files, list_of_duplicates = find_file_duplicates(path_to_dir)
         print_file_duplicates(list_of_duplicates)
