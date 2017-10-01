@@ -23,11 +23,6 @@ def print_file_duplicates(dict_files):
             print('File name: {}  File size: {} - Duplicate list: {}'.format(file_key[0], file_key[1], file_value))
 
 
-def print_file_duplicates1(orig_files_dict):
-    for orig_file_key, orig_file_value in orig_files_dict:
-        print(orig_file_key, orig_file_value)
-
-
 if __name__ == '__main__':
     if len(sys.argv) == 2 and os.path.exists(sys.argv[1]):
         path_to_dir = sys.argv[1]
