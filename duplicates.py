@@ -3,30 +3,35 @@ import sys
 
 
 def find_file_duplicates(path_to_dir):
-    dict_of_orig_files = {}
-    list_of_duplicates = []
+    dict_of_files = {}
     for dir_path, sub_dirs, file_names in os.walk(path_to_dir):
         for file_name in file_names:
             file_size = os.stat(os.path.join(dir_path, file_name)).st_size
             file_path = os.path.join(dir_path, file_name)
-            if dict_of_orig_files.get((file_name, file_size,)) is None:
-                dict_of_orig_files.update({(file_name, file_size,): file_path})
+            if dict_of_files.get((file_name, file_size,)) is None:
+                dict_of_files.update({(file_name, file_size,): [file_path]})
             else:
-                list_of_duplicates.append((file_name, file_size, file_path))
-    return dict_of_orig_files, list_of_duplicates
+                duplicates_path_list = dict_of_files.get((file_name, file_size,))
+                duplicates_path_list.append(file_path)
+                dict_of_files.update({(file_name, file_size,): duplicates_path_list})
+    return dict_of_files
 
 
-def print_file_duplicates(files_list):
-    for file in files_list:
-        print('Duplicate: {}  file size: {} - Original file: {} '.format(file[2],
-                                                                         file[1],
-                                                                         dict_orig_files.get((file[0], file[1],))))
+def print_file_duplicates(dict_files):
+    for file_key, file_value in dict_files.items():
+        if len(file_value) > 1:
+            print('File name: {}  File size: {} - Duplicate list: {}'.format(file_key[0], file_key[1], file_value))
+
+
+def print_file_duplicates1(orig_files_dict):
+    for orig_file_key, orig_file_value in orig_files_dict:
+        print(orig_file_key, orig_file_value)
 
 
 if __name__ == '__main__':
     if len(sys.argv) == 2 and os.path.exists(sys.argv[1]):
         path_to_dir = sys.argv[1]
-        dict_orig_files, list_duplicates = find_file_duplicates(path_to_dir)
-        print_file_duplicates(list_duplicates)
+        dict_files = find_file_duplicates(path_to_dir)
+        print_file_duplicates(dict_files)
     else:
         print('Please define path to dir for analyse \nExample: python duplicates.py <path_to_dir>')

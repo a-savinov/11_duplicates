@@ -7,16 +7,15 @@ Find duplicate of files on directory tree (by name and file size)
 Example of script launch on Linux, Python 3.5:
 
 ```bash
-$ python duplicates.py c:\adb
+$ python duplicates.py <path_to_dir>
 ```
 
 ## Output example:
 
 ```bash
 $ python duplicates.py c:\adb
-Duplicate: c:\adb\test\adb.exe file size: 0 - Original file: c:\adb\adb.exe
-Duplicate: c:\adb\test2\adb.exe file size: 0 - Original file: c:\adb\adb.exe
-Duplicate: c:\adb\test4\adb.exe file size: 2 - Original file: c:\adb\test3\adb.exe
+File name: adb.exe  File size: 0 - Duplicate list: ['c:\\adb\\adb.exe', 'c:\\adb\\test\\adb.exe', 'c:\\adb\\test2\\adb.exe']
+File name: adb.exe  File size: 2 - Duplicate list: ['c:\\adb\\test3\\adb.exe', 'c:\\adb\\test4\\adb.exe']
 ```
 
 # Project Goals
