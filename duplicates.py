@@ -1,5 +1,5 @@
+import argparse
 import os
-import sys
 
 
 def find_file_duplicates(path_to_dir):
@@ -11,22 +11,31 @@ def find_file_duplicates(path_to_dir):
             if dict_of_files.get((file_name, file_size,)) is None:
                 dict_of_files.update({(file_name, file_size,): [file_path]})
             else:
-                duplicates_path_list = dict_of_files.get((file_name, file_size,))
+                duplicates_path_list = dict_of_files.get(
+                    (file_name, file_size,))
                 duplicates_path_list.append(file_path)
-                dict_of_files.update({(file_name, file_size,): duplicates_path_list})
+                dict_of_files.update(
+                    {(file_name, file_size,): duplicates_path_list})
     return dict_of_files
 
 
 def print_file_duplicates(dict_files):
     for file_key, file_value in dict_files.items():
         if len(file_value) > 1:
-            print('File name: {}  File size: {} - Duplicate list: {}'.format(file_key[0], file_key[1], file_value))
+            print('File name: {}  File size: {} - Duplicates list: {}'.format(
+                file_key[0], file_key[1], file_value))
+
+
+def get_input_argument_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--dir', required=True,
+                        help='Path to DIR for analyse')
+    return parser
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2 and os.path.exists(sys.argv[1]):
-        path_to_dir = sys.argv[1]
-        dict_files = find_file_duplicates(path_to_dir)
-        print_file_duplicates(dict_files)
-    else:
-        print('Please define path to dir for analyse \nExample: python duplicates.py <path_to_dir>')
+    parser = get_input_argument_parser()
+    namespace = parser.parse_args()
+    path_to_dir = namespace.dir
+    dict_files = find_file_duplicates(path_to_dir)
+    print_file_duplicates(dict_files)
